@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html class="my_html" lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>P24</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/p24.css">
+    <script src="js/sha512.js" type="text/javascript"></script>
+    <script src="js/p24.js" type="text/javascript"></script>
+  </head>
+  <body>
+
+    <!-- <input type="button" onclick="sendTx()" value="SEND TX"/>
+    <input type="button" onclick="allPaymentMethods()" value="all methods"/> -->
+    <!-- <form action="" method="post"> -->
+      <div class="container mt-5" onchange="updateData()">
+
+        <div class="row justify-content-center p-3 rowWhite">
+          <div class="col-12 text-center">
+            <h1 id="h1NumerOferty"></h1>
+          </div>
+          <div class="col-12 text-center">
+            <h2> Wybie metod płatności</h2>
+          </div>
+
+          <!-- <div id="paypal" class="dropdiv col-7 m-2">
+            <div class="row head justify-content-center">
+              <div class="col-3">
+                <input type="radio" id="ispaypal" name="payment" value="PayPal" onclick="platnosci(this)">
+                <label class="align-middle" for="ispaypal">PayPal</label><br>
+              </div>
+              <div class="arrow col-9"  onclick="openDescription('paypal','paypaldescription','paypalArrowUp','paypalArrowDown')">
+                <img id="paypalArrowDown" src="img/arrow_down_white.png" alt=" show description">
+                <img id="paypalArrowUp" class="hide" src="img/arrow_up_white.png" alt="hide description">
+              </div>
+              <div id="paypaldescription" class="text text-justify col text-left">
+                <p>PayPal is an electronic commerce company that facilitates payments between parties through online transfers. PayPal allows customers to establish an account on its platform, which is connected to a user's credit card or checking account. Once identification and proof of funds are confirmed, users can begin sending or receiving payments to and from other PayPal accounts online or through the company's app.</p>
+              </div>
+            </div>
+          </div> -->
+
+          <div id="p24" class="dropdiv col-7 m-2">
+            <div class="row head justify-content-center">
+              <div class="col-4">
+                <input type="radio" id="isp24" name="payment" value="Przelewy24" onclick="platnosci(this)">
+                <label for="isp24" class="align-middle">Przelewy24</label><br>
+              </div>
+              <div class="arrow col-8"  onclick="openDescription('p24','p24description','p24ArrowUp','p24ArrowDown')">
+                <img id="p24ArrowDown" src="img/arrow_down_white.png" alt=" show description">
+                <img id="p24ArrowUp" class="hide" src="img/arrow_up_white.png" alt="hide description">
+              </div>
+              <div id="p24description" class="text text-justify col text-left">
+                <p>Serwis Przelewy24 specjalizuje się w tworzeniu i eksploatacji oprogramowania przeznaczonego dla szerokiego zakresu usług łączących klientów biznesowych oraz indywidualnych. Dostrzegając postęp w dziedzinie technologii, postanowiliśmy skonstruować wyjątkowy produkt, narzędzie usprawniające i znacznie przyspieszające procesy płatności on-line. Od początku istnienia posługujemy się szerokim zakresem narzędzi, aby finalny użytkownik tworzonego przez nas oprogramowania, dostał to na czym mu najbardziej zależy</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="card" class="dropdiv col-7 m-2">
+            <div class="row head justify-content-center">
+              <div class="col-5">
+                <input type="radio" id="iscard" name="payment" value="Visa, MasterCard" onclick="platnosci(this)">
+                <label for="iscard" class="align-middle">Visa, MasterCard</label><br>
+              </div>
+              <div class="arrow col-7"  onclick="openDescription('card','cardDescription','cardArrowUp','cardArrowDown')">
+                <img id="cardArrowDown" src="img/arrow_down_white.png" alt=" show description">
+                <img id="cardArrowUp" class="hide" src="img/arrow_up_white.png" alt="hide description">
+              </div>
+              <div id="cardDescription" class="text text-justify col text-left">
+                <p>Wpłaty na konto bankowe przyjmujemy również w $ € (w przelewie napisz numier oferty)</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="konto" class="dropdiv col-7 m-2">
+            <div class="row head justify-content-center">
+              <div class="col-6">
+                <input type="radio" id="isKonto" name="payment" value="konto serwisa" onclick="platnosci(this)">
+                <label for="isKonto" class="align-middle">Zapłać z konta</label><br>
+              </div>
+              <div class="arrow col-6"  onclick="openDescription('konto','kontoDescription','kontoArrowUp','kontoArrowDown')">
+                <img id="kontoArrowDown" src="img/arrow_down_white.png" alt=" show description">
+                <img id="kontoArrowUp" class="hide" src="img/arrow_up_white.png" alt="hide description">
+              </div>
+              <div id="kontoDescription" class="text text-justify col text-left">
+                <p>Na loncie masz: 999 999 zł</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div id="dotacja" class="dropdiv col-7 m-2">
+            <div class="row head justify-content-center">
+              <div class="col-7">
+                <div class="form-inline">
+                  <label id="isd" class="align-middle pr-1"></label><br>
+                  <label for="isd" class="align-middle">Dotacja na rozwój portalu</label><br>
+                </div>
+              </div>
+              <div class="arrow col-5"  onclick="openDescription('card','dotacjaDescription','dotacjaArrowUp','dotacjaArrowDown')">
+                <img id="dotacjaArrowDown" src="img/arrow_down_white.png" alt=" show description">
+                <img id="dotacjaArrowUp" class="hide" src="img/arrow_up_white.png" alt="hide description">
+              </div>
+              <div id="dotacjaDescription" class="text text-justify col text-left">
+                <p>Dotacja na rozwój portalu</p>
+                <input type="radio" id="isd0" name="dotacja" value="0" onclick="dotacja(this)" checked="checked">
+                <label for="isd0" class="align-middle">0 zl</label><br>
+                <input type="radio" id="isd10" name="dotacja" value="10" onclick="dotacja(this)">
+                <label for="isd10" class="align-middle">10 zl</label><br>
+                <input type="radio" id="isd20" name="dotacja" value="20" onclick="dotacja(this)">
+                <label for="isd20" class="align-middle">20 zl</label><br>
+                <input type="radio" id="isd50" name="dotacja" value="50" onclick="dotacja(this)">
+                <label for="isd50" class="align-middle">50 zl</label><br>
+                <input type="radio" id="isd100" name="dotacja" value="100" onclick="dotacja(this)">
+                <label for="isd100" class="align-middle">100 zl</label><br>
+                <input type="radio" id="isdOther" name="dotacja" value="other" onclick="dotacja(this)">
+                <label for="isdOther" class="align-middle">inna kwota (zl)</label><br>
+                <input id="dOtherValue" class="m-2" type="number" placeholder="wprowadz kwotę" onchange="dotacja(this)" value="0"></input>
+              </div>
+            </div>
+          </div>
+
+          <div id="konkurs" class="dropdiv col-7 m-2">
+            <div class="row head justify-content-center">
+              <div class="col-6">
+                <input type="radio" id="isKonkurs" name="konkurs" value="konkurs" onclick="konkursy(this)">
+                <label for="isKonkurs" class="align-middle">Biorę udział w konkursach</label><br>
+              </div>
+              <div class="arrow col-6"  onclick="openDescription('konkurs','konkursDescription','konkursArrowUp','konkursArrowDown')">
+                <img id="konkursArrowDown" src="img/arrow_down_white.png" alt=" show description">
+                <img id="konkursArrowUp" class="hide" src="img/arrow_up_white.png" alt="hide description">
+              </div>
+              <div id="konkursDescription" class="text text-justify col text-left">
+                <p>Chce sprobować otrzymać prezent</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="rabat" class="dropdiv col-7 m-2">
+            <div class="row head justify-content-center">
+              <div class="col-6">
+                <input type="radio" id="isRabat" name="rabat" value="rabat" onclick="rabat(this)">
+                <label for="isRabat" class="align-middle">Mam kod rabatowy</label><br>
+              </div>
+              <div class="arrow col-6"  onclick="openDescription('rabat','rabatDescription','rabatArrowUp','rabatArrowDown')">
+                <img id="rabatArrowDown" src="img/arrow_down_white.png" alt=" show description">
+                <img id="rabatArrowUp" class="hide" src="img/arrow_up_white.png" alt="hide description">
+              </div>
+              <div id="rabatDescription" class="text text-justify col text-left">
+                <p>kod rabatowy otrzymujesz meilem</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center p-3">
+          <div id="result" class="col-12 m-0">
+              <div class="row justify-content-center">
+                <div id="kodRabatDiv"class="col-6 text-right">
+                  <label for="kodRabat">Kod rabatowy</label><br>
+                  <input type="text" id="kodRabat" name="kodRabat" disabled onchange="rabat(this);updateRabatValue();checkKodRabat()">
+                </div>
+                <div id="resultCalculation"class="col-6 text-left">
+                  <div class="form-inline">
+                    <label for="methodValue">Biorę udział w konkursach:</label><br>
+                    <input type="text" class="m-0" id="konkursValue" readonly="readonly"></input>
+                  </div>
+                  <div class="form-inline">
+                    <label for="methodValue">Method płatnośći:</label><br>
+                    <input type="text" class="m-0" id="methodValue" readonly="readonly"></input>
+                  </div>
+                  <div class="form-inline">
+                    <label for="cenaValue">Cena:</label><br>
+                    <input type="text" class="m-0" id="cenaValue" value="0" readonly="readonly"></input>
+                  </div>
+                  <div class="form-inline">
+                    <label for="dotacjaValue">Dotacja:</label><br>
+                    <input type="text" class="m-0" id="dotacjaValue" value="0" readonly="readonly"></input>
+                  </div>
+                  <div class="form-inline">
+                    <label for="razemValue">Razem:</label><br>
+                    <input type="text" class="m-0" id="razemValue" readonly="readonly"></input>
+                  </div>
+                  <div id="zRabatemDiv" class="form-inline">
+                    <label for="zRabatemValue">Razem z rabatem:</label><br>
+                    <input type="text" class="m-0" id="zRabatemValue" readonly="readonly"></input>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center p-3 rowWhite">
+          <div class="col-6 text-right">
+            <input type="button" class="blueButton"value="WSTECZ"></input>
+          </div>
+          <div class="col-6 text-left">
+            <input type="button" class="orangeButton" value="WYSTAWIAM I PŁACĘ" onclick="pay()"></input>
+          </div>
+        </div>
+      </div>
+    <!-- </form> -->
+
+    <script language="javascript">
+      var p24Amount = 10000;
+      var p24Currency = 'PLN';
+      var p24Description = 'Some test description';
+      var p24ClientEmail = 'client@email.com';
+      var p24Client = 'ClientName ClientSurnames';
+      var p24ClientAddress = 'adres 99'
+      var p24Zip = '00-000';
+      var p24City = 'City';
+      var p24ClientCountry = 'PL';//ISO
+      var p24ClientPhone = '48222323232132';
+      var p24ClientLanguage = 'pl';//ISO
+      var p24ClientPhonep = '44534535334';
+      var p24TransferLabel = 'Opis transakcji';
+      var numerOferty = '8822888';
+      var zKontoUrlRedirect = 'zkonto.html';
+      var zCardUrlRedirect = 'zcard.html';
+
+      function pay(){
+        console.log('try to pay');
+        if(isMethodChecked()){
+            p24Amount = getCenaRazemRabat();
+            p24TransferLabel = getTransferLabel();
+            if(getMethodPlatnosci() == 'konto serwisa'){
+                window.open(zKontoUrlRedirect, '_blank');
+                return;
+            }
+            if(getMethodPlatnosci() == 'Visa, MasterCard'){
+                window.open(zCardUrlRedirect, '_blank');
+                return;
+            }
+            console.log(p24Amount);
+            console.log(p24TransferLabel);
+            sendTx(p24SessionId,p24Amount,p24Currency,p24Description,p24ClientEmail,p24Client,p24ClientAddress,p24Zip,p24City,p24ClientCountry,p24ClientPhonep,p24ClientLanguage,p24TransferLabel);
+        }else{
+          alert('Nie wybrany method płatności');
+        }
+      }
+
+      function openDescription(divId,descriptionId,arrowUpId,arrowDownId){
+        var isDescriptionOpen = document.getElementById(descriptionId).style.display == 'block';
+        if(isDescriptionOpen){
+          document.getElementById(descriptionId).style.display = 'none';
+          document.getElementById(arrowDownId).style.display = 'block';
+          document.getElementById(arrowUpId).style.display = 'none';
+        }else{
+          document.getElementById(descriptionId).style.display = 'block';
+          document.getElementById(arrowDownId).style.display = 'none';
+          document.getElementById(arrowUpId).style.display = 'block';
+        }
+      }
+      function setOpacity(eleId, value){
+        if(value != null){
+          document.getElementById(eleId).style.opacity = value;
+        }
+      }
+      function updateNumerOferty(){
+        document.getElementById('h1NumerOferty').innerText = 'NUMER OFERTY:' + numerOferty;
+      }
+      var checkedButtonId = {};
+      function unCheckButton(ele){
+        if(ele.checked){
+          if(checkedButtonId[ele.id]){
+            ele.checked = false;
+            checkedButtonId[ele.id] = false;
+            return true;
+          }else{
+            checkedButtonId[ele.id] = true;
+            return false;
+          }
+        }else {
+          return true;
+        }
+      }
+      function getTransferLabel(){
+        var text = 'A100';
+        if(getKonkursy()){
+          text += ' ,K-TAK';
+        }else{
+          text += ' ,K-NIE';
+        }
+        if(getDotacja() > 0){
+          text += ',D-' + convertToBanknotes(getDotacja());
+        }else{
+          text += ',D-0.00';
+        }
+        return text;
+      }
+
+      //start cena
+      function updateCenaValue(){
+        document.getElementById('cenaValue').value = convertToBanknotes(getCena()) + ' ' + p24Currency;
+      }
+      function getCena(){
+        return p24Amount;
+      }
+      function setCena(val){
+        p24Amount = val;
+      }
+      function convertToBanknotes(val){
+        return (val/100).toFixed(2);
+      }
+      function updateCenaRazemValue(){
+        var razemValue = getCena() + getDotacja();
+        document.getElementById('razemValue').value = convertToBanknotes(razemValue) + ' ' + p24Currency;
+      }
+      function updateCenaRazemRabatValue(){
+        document.getElementById('zRabatemValue').value = convertToBanknotes(getCenaRazemRabat()) + ' ' + p24Currency;
+      }
+      function getCenaRazemRabat(){
+        var val = getCena() + getDotacja() - calculateRabat();
+        return (val).toFixed(0);
+      }
+      //end cena
+
+      // start method platnosci
+      var methodPlatnosciValue = null;
+      function isMethodChecked(){
+        var isChecked = getMethodPlatnosci();
+        return isChecked != null;
+      }
+      function platnosci(ele){
+        methodPlatnosciValue = ele.value;
+        updatePlatnosciValue();
+      }
+      function updatePlatnosciValue(){
+        document.getElementById('methodValue').value = methodPlatnosciValue;
+      }
+      function getMethodPlatnosci(){
+        return methodPlatnosciValue;
+      }
+      // end method platnosci
+
+      // start dotacja
+      var dotacjaValue = 0;
+      function displaySwitchDotacjaOtherValue(ele){
+        var radioForOtherInputId = 'isdOther';
+        var otherValueInputId = 'dOtherValue';
+        var isShow = document.getElementById(otherValueInputId).style.display == 'block';
+        if(ele.id != otherValueInputId && (ele.id != radioForOtherInputId || isShow)){
+          document.getElementById(otherValueInputId).style.display = 'none';
+          document.getElementById(otherValueInputId).value = '0';
+        }else{
+          document.getElementById(otherValueInputId).style.display = 'block';
+        }
+      }
+      function setDotacjaValue(ele){
+        var otherId = 'isdOther';
+        if(ele.id == otherId){
+          dotacjaValue = document.getElementById('dOtherValue').value;
+        }else{
+          dotacjaValue = document.getElementById(ele.id).value;
+        }
+      }
+      function dotacja(ele){
+          var otherValueId = 'dOtherValue';
+          displaySwitchDotacjaOtherValue(ele);
+          if(ele.id != otherValueId && unCheckButton(ele)){
+            dotacjaValue = 0;
+          }else{
+            setDotacjaValue(ele);
+          }
+        updateDotacjaValue();
+      }
+      function updateDotacjaValue(){
+        document.getElementById('dotacjaValue').value = dotacjaValue + ' ' + p24Currency;
+        document.getElementById('isd').innerText = dotacjaValue + ' ' + p24Currency;
+      }
+      function getDotacja(){
+        return dotacjaValue * 100;
+      }
+      // end dotacja
+
+      //start konkursy
+      var konkursValue = false;
+      function konkursy(ele){
+        konkursValue = unCheckButton(ele)? false: true;
+        updateKonkursValue();
+      }
+      function updateKonkursValue(){
+        document.getElementById('konkursValue').value = konkursValue? 'Tak' : 'Nie';
+      }
+      function getKonkursy(){
+        return konkursValue;
+      }
+      //end konkursy
+
+      //start kod rabat
+      var isHasRabat = false;
+      var rabatValue = '';
+      function rabat(ele){
+        isHasRabat = ele.id != 'kodRabat' && unCheckButton(ele)? false: true;
+        if(isHasRabat){
+          setOpacity('kodRabatDiv', 1);
+          setOpacity('zRabatemDiv', 1);
+          document.getElementById("kodRabat").disabled = false;
+        }else{
+          setOpacity('kodRabatDiv', .5);
+          setOpacity('zRabatemDiv', .5);
+          document.getElementById("kodRabat").disabled = true;
+        }
+        setRabatValue(ele);
+        updateRabatValue();
+      }
+      function setRabatValue(ele){
+        if(ele.id == 'kodRabat'){
+            rabatValue = document.getElementById("kodRabat").value;
+        }else{
+            document.getElementById("kodRabat").value = '';
+            rabatValue = '';
+        }
+      }
+      function getRabatValue(){
+        return rabatValue;
+      }
+      function isRabatValueExist(){
+        if(getRabatValue() == '11111'){
+          return true;
+        }else{
+          return false;
+        }
+      }
+      function updateRabatValue(){
+        updateCenaRazemRabatValue();
+      }
+      function getRabat(){
+        if(getRabatValue() == '11111'){
+          return 3.333;
+        }else{
+          return 0;
+        }
+      }
+      function calculateRabat(){
+        var cena = getCena();
+        var rabat = getRabat()/100;
+        return cena * rabat;
+      }
+      function checkKodRabat(){
+        if(!isRabatValueExist()){
+          alert('kod rabatowy nie poprawny');
+        }
+      }
+      //end kod rabat
+
+      function updateData(){
+        updateNumerOferty();
+        updatePlatnosciValue();
+        updateCenaValue();
+        updateDotacjaValue();
+        updateCenaRazemValue();
+        updateCenaRazemRabatValue()
+      }
+
+      function initData(){
+        updateData();
+      }
+      initData();
+    </script>
+  </body>
+</html>

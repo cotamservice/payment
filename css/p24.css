@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #ececec;
+}
+
+.rowWhite{
+  background-color: white;
+}
+
+.dropdiv{
+  border: 2px solid #45a1ac;
+  color: white;
+}
+.dropdiv .head {
+  font-size: 16px;
+  background-color: #45a1ac;
+}
+.dropdiv .text {
+  background-color: white;
+  color: black;
+  display: none;
+}
+
+.dropdiv .head .arrow img{
+  float: right;
+}
+
+.dropdiv .head .arrow .hide{
+  display: none;
+}
+.dropdiv #dotacjaDescription #dOtherValue{
+  display: none;
+}
+.blueButton, .orangeButton{
+  border: 1px solid #9a9a9a;
+  line-height: 18px;
+  font-size: 18;
+  font-weight: bold;
+  padding: 14px;
+}
+.blueButton{
+  color: white;
+  background-color: #45a1ac;
+}
+.orangeButton{
+  background-color: #e9bc09;
+}
+
+#resultCalculation input{
+  border: none;
+  background-color: inherit;
+}
+#resultCalculation input:focus{
+  outline-width: 0;
+}
+#kodRabatDiv, #zRabatemDiv{
+opacity: .5;
+}
